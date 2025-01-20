@@ -50,7 +50,6 @@ int main() {
     char address_buffer[100];
     char service_buffer[100];
     getnameinfo(bind_address->ai_addr, bind_address->ai_addrlen, address_buffer, sizeof(address_buffer), service_buffer, sizeof(service_buffer), NI_NUMERICHOST | NI_NUMERICSERV);
-    printf("ipaddr: %s\tport: %s\n", address_buffer, service_buffer);
 
     printf("Creating socket...\n");
     int socket_listen;
@@ -61,7 +60,7 @@ int main() {
     }
 
 
-    printf("Binding socket to local address...\n");
+    printf("Binding socket to \n\nIP addr: %s\nPort: %s\n\n",address_buffer, service_buffer);
     if (bind(socket_listen, bind_address->ai_addr, bind_address->ai_addrlen)) {
         fprintf(stderr, "bind() failed. (%d)\n", errno);
         return 1;
